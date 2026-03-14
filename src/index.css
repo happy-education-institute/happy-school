@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 30% 95%;
+    --foreground: 25 35% 15%;
+
+    --card: 35 40% 97%;
+    --card-foreground: 25 35% 15%;
+
+    --popover: 35 40% 97%;
+    --popover-foreground: 25 35% 15%;
+
+    --primary: 25 70% 38%;
+    --primary-foreground: 40 50% 97%;
+
+    --secondary: 24 90% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 35 25% 90%;
+    --muted-foreground: 25 15% 45%;
+
+    --accent: 48 85% 58%;
+    --accent-foreground: 25 35% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 25 70% 38%;
+
+    --radius: 1rem;
+
+    --school-brown: 25 35% 15%;
+    --school-orange: 24 90% 52%;
+    --school-cream: 35 50% 94%;
+    --school-green: 145 45% 38%;
+    --school-yellow: 48 85% 58%;
+    --school-warm: 30 30% 95%;
+    --school-olive: 80 25% 42%;
+    --school-peach: 20 80% 88%;
+    --school-sage: 120 15% 85%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 25 25% 8%;
+    --foreground: 35 30% 90%;
+    --card: 25 25% 12%;
+    --card-foreground: 35 30% 90%;
+    --popover: 25 25% 12%;
+    --popover-foreground: 35 30% 90%;
+    --primary: 24 80% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 24 90% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 25 20% 18%;
+    --muted-foreground: 30 15% 60%;
+    --accent: 48 85% 58%;
+    --accent-foreground: 25 35% 15%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 25 20% 22%;
+    --input: 25 20% 22%;
+    --ring: 24 80% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'DM Serif Display', serif;
+  }
+}
+
+@layer utilities {
+  .blob-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  .blob-shape-2 {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+}
