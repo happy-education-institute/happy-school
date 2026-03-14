@@ -43,12 +43,15 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
     <motion.div
       key={milestone.year}
       ref={ref}
-      className={`relative flex items-center mb-16 ${isLeft ? "justify-start" : "justify-end"}`}
+      className={`relative flex items-center mb-12 md:mb-16 ${
+        isLeft ? "md:justify-start" : "md:justify-end"
+      }`}
       initial={{ opacity: 0, x: isLeft ? -100 : 100, scale: 0.8 }}
       animate={isInView ? { opacity: 1, x: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.12, ease: "easeOut" }}
     >
-      <div className={`w-full md:w-1/2 ${isLeft ? "pr-8 md:pl-0" : "pl-8 md:pr-0"}`}>
+      {/* Card Content */}
+      <div className={`w-full md:w-1/2 ${isLeft ? "md:pr-8" : "md:pl-8"}`}>
         <motion.div
           whileHover={{
             y: -6,
@@ -56,9 +59,7 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
             boxShadow: "0 16px 32px rgba(30, 115, 190, 0.15)",
             transition: { duration: 0.3, ease: "easeOut" },
           }}
-          className={`p-8 bg-white shadow-[0_6px_16px_rgba(13,34,64,0.08)] rounded-2xl border border-[#E6EEF6] ${
-            isLeft ? "ml-auto" : "mr-auto"
-          } transition-all duration-300 hover:border-[#1E73BE]/40`}
+          className="p-6 md:p-8 bg-white shadow-[0_6px_16px_rgba(13,34,64,0.08)] rounded-2xl border border-[#E6EEF6] transition-all duration-300 hover:border-[#1E73BE]/40"
         >
           <motion.div
             className="text-2xl font-bold text-[#1E73BE] mb-2"
@@ -87,27 +88,42 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
         </motion.div>
       </div>
 
+      {/* Timeline Dot - Hidden on mobile */}
       <motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#1E73BE] rounded-full border-4 border-white shadow-lg"
+        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#1E73BE] rounded-full border-4 border-white shadow-lg hidden md:block"
         initial={{ scale: 0, rotate: -180 }}
         animate={isInView ? { scale: 1, rotate: 0 } : {}}
-        transition={{ duration: 0.5, delay: index * 0.12 + 0.2, type: "spring", stiffness: 200 }}
-        whileHover={{ scale: 1.15, boxShadow: "0 0 20px rgba(30, 115, 190, 0.5)" }}
+        transition={{
+          duration: 0.5,
+          delay: index * 0.12 + 0.2,
+          type: "spring",
+          stiffness: 200,
+        }}
+        whileHover={{
+          scale: 1.15,
+          boxShadow: "0 0 20px rgba(30, 115, 190, 0.5)",
+        }}
       />
 
+      {/* Animated Pulse - Hidden on mobile */}
       <motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#1E73BE] rounded-full opacity-30"
+        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#1E73BE] rounded-full opacity-30 hidden md:block"
         initial={{ scale: 1 }}
         animate={isInView ? { scale: [1, 2, 1], opacity: [0.3, 0, 0.3] } : {}}
-        transition={{ duration: 2, delay: index * 0.12 + 0.6, repeat: Infinity, repeatDelay: 3 }}
+        transition={{
+          duration: 2,
+          delay: index * 0.12 + 0.6,
+          repeat: Infinity,
+          repeatDelay: 3,
+        }}
       />
     </motion.div>
   );
 };
 
 const JourneyTimeline = () => (
-  <section id="journey" className="py-20 bg-white">
-    <div className="max-w-6xl mx-auto px-6 lg:px-8">
+  <section id="journey" className="py-20 bg-white overflow-hidden">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0, y: 50 }}
@@ -119,26 +135,30 @@ const JourneyTimeline = () => (
           Our <span className="text-[#1E73BE]">Journey</span>
         </h2>
         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-          A timeline of care, curiosity, and bold upgrades that keep our students future-ready.
+          A timeline of care, curiosity, and bold upgrades that keep our
+          students future-ready.
         </p>
       </motion.div>
 
       <div className="relative">
+        {/* Vertical Line - Hidden on mobile */}
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 w-1 bg-[#1E73BE] origin-top"
+          className="absolute left-1/2 -translate-x-1/2 w-1 bg-[#1E73BE] origin-top hidden md:block"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           transition={{ duration: 2, ease: "easeInOut" }}
           viewport={{ once: false }}
           style={{ height: "100%" }}
         />
-        <div className="absolute left-1/2 -translate-x-1/2 w-1 bg-[#EEF6FF] h-full" />
+        <div className="absolute left-1/2 -translate-x-1/2 w-1 bg-[#EEF6FF] h-full hidden md:block" />
 
-        <div className="space-y-8">
-          {milestones.map((milestone, index) => (
-            <MilestoneCard key={milestone.year} milestone={milestone} index={index} />
-          ))}
-        </div>
+        {milestones.map((milestone, index) => (
+          <MilestoneCard
+            key={milestone.year}
+            milestone={milestone}
+            index={index}
+          />
+        ))}
       </div>
     </div>
   </section>
