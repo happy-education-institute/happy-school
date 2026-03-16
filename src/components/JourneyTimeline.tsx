@@ -56,13 +56,13 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
           whileHover={{
             y: -6,
             scale: 1.02,
-            boxShadow: "0 16px 32px rgba(30, 115, 190, 0.15)",
+            boxShadow: "0 16px 32px hsl(var(--primary) / 0.15)",
             transition: { duration: 0.3, ease: "easeOut" },
           }}
-          className="p-6 md:p-8 bg-white shadow-[0_6px_16px_rgba(13,34,64,0.08)] rounded-2xl border border-[#E6EEF6] transition-all duration-300 hover:border-[#1E73BE]/40"
+          className="p-6 md:p-8 bg-card shadow-md rounded-[2rem] border border-border transition-all duration-300 hover:border-primary/40"
         >
           <motion.div
-            className="text-2xl font-bold text-[#1E73BE] mb-2"
+            className="text-2xl font-bold text-primary mb-2"
             initial={{ scale: 0 }}
             animate={isInView ? { scale: 1 } : {}}
             transition={{ duration: 0.4, delay: index * 0.12 + 0.2 }}
@@ -70,7 +70,7 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
             {milestone.year}
           </motion.div>
           <motion.h3
-            className="text-xl font-semibold text-gray-900 mb-3"
+            className="font-heading text-xl text-foreground mb-3 leading-tight"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, delay: index * 0.12 + 0.28 }}
@@ -78,7 +78,7 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
             {milestone.title}
           </motion.h3>
           <motion.p
-            className="text-slate-600 leading-relaxed"
+            className="text-muted-foreground leading-relaxed text-sm md:text-base"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, delay: index * 0.12 + 0.34 }}
@@ -90,7 +90,7 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
 
       {/* Timeline Dot - Hidden on mobile */}
       <motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#1E73BE] rounded-full border-4 border-white shadow-lg hidden md:block"
+        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-secondary rounded-full border-4 border-background shadow-lg hidden md:block"
         initial={{ scale: 0, rotate: -180 }}
         animate={isInView ? { scale: 1, rotate: 0 } : {}}
         transition={{
@@ -101,13 +101,13 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
         }}
         whileHover={{
           scale: 1.15,
-          boxShadow: "0 0 20px rgba(30, 115, 190, 0.5)",
+          boxShadow: "0 0 20px hsl(var(--secondary) / 0.5)",
         }}
       />
 
       {/* Animated Pulse - Hidden on mobile */}
       <motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#1E73BE] rounded-full opacity-30 hidden md:block"
+        className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-secondary rounded-full opacity-30 hidden md:block"
         initial={{ scale: 1 }}
         animate={isInView ? { scale: [1, 2, 1], opacity: [0.3, 0, 0.3] } : {}}
         transition={{
@@ -122,8 +122,8 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
 };
 
 const JourneyTimeline = () => (
-  <section id="journey" className="py-20 bg-white overflow-hidden">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="journey" className="py-20 bg-background overflow-hidden">
+    <div className="container mx-auto px-4">
       <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0, y: 50 }}
@@ -131,26 +131,29 @@ const JourneyTimeline = () => (
         transition={{ duration: 0.6 }}
         viewport={{ once: false }}
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Our <span className="text-[#1E73BE]">Journey</span>
+        <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-3">About Us</p>
+        <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-4">
+          Our <span className="text-secondary italic">Journey</span>
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-medium">
           A timeline of care, curiosity, and bold upgrades that keep our
           students future-ready.
         </p>
       </motion.div>
 
-      <div className="relative">
-        {/* Vertical Line - Hidden on mobile */}
+      <div className="relative max-w-5xl mx-auto">
+        {/* Vertical Line Background - Hidden on mobile */}
+        <div className="absolute left-1/2 -translate-x-1/2 w-1 bg-border/50 h-full hidden md:block rounded-full" />
+        
+        {/* Animated Vertical Line - Hidden on mobile */}
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 w-1 bg-[#1E73BE] origin-top hidden md:block"
+          className="absolute left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-secondary to-primary origin-top hidden md:block rounded-full"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           transition={{ duration: 2, ease: "easeInOut" }}
           viewport={{ once: false }}
           style={{ height: "100%" }}
         />
-        <div className="absolute left-1/2 -translate-x-1/2 w-1 bg-[#EEF6FF] h-full hidden md:block" />
 
         {milestones.map((milestone, index) => (
           <MilestoneCard

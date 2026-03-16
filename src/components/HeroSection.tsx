@@ -6,14 +6,18 @@ const highlights = ["Smart Classrooms", "Experienced Faculty", "Digital Learning
 
 const HeroSection = () => (
   <section id="home" className="relative pt-24 pb-8 overflow-hidden">
+
     {/* Decorative blobs */}
-    <div className="absolute top-32 left-8 w-16 h-16 bg-school-yellow blob-shape opacity-60 animate-float" />
-    <div className="absolute top-48 right-12 w-12 h-12 bg-school-green blob-shape-2 opacity-40 animate-wiggle" />
-    <div className="absolute bottom-20 left-1/4 w-10 h-10 bg-school-peach rounded-full opacity-50 animate-float" style={{ animationDelay: "1s" }} />
+    <div className="absolute top-32 left-8 w-16 h-16 bg-school-yellow blob-shape opacity-50 animate-float" />
+    <div className="absolute top-48 right-12 w-12 h-12 bg-school-green blob-shape-2 opacity-30 animate-wiggle" />
+    <div className="absolute bottom-20 left-1/4 w-10 h-10 bg-school-peach rounded-full opacity-40 animate-float" style={{ animationDelay: "1s" }} />
 
     <div className="container mx-auto px-4">
       {/* Top hero text - centered like reference */}
       <div className="text-center max-w-3xl mx-auto mb-8">
+        <div className="inline-block px-5 py-2 mb-6 rounded-full border border-primary/20 bg-primary/10 text-primary font-bold tracking-wide shadow-sm animate-fade-in">
+          Welcome to <span className="text-secondary">Happy Public Senior Secondary School</span>
+        </div>
         <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4">
           Putting your child's{" "}
           <span className="text-secondary italic">Future</span>
@@ -55,7 +59,7 @@ const HeroSection = () => (
           <div className="rounded-[2rem] overflow-hidden shadow-2xl mx-8">
             <img
               src={heroImg}
-              alt="Happy students at Happy Public Secondary School"
+              alt="Happy students at Happy Public Senior Secondary School"
               className="w-full h-64 md:h-80 lg:h-96 object-cover"
             />
           </div>

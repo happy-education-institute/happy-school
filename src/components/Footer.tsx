@@ -29,17 +29,16 @@ const Footer = () => (
         </div>
         <div>
           <h4 className="font-bold mb-3 text-primary-foreground/80">Location</h4>
-          <p className="text-primary-foreground/50">Sangariya, Rajasthan</p>
+          <p className="text-primary-foreground/50">Udaipur Road, Sangariya, Block - Barisadri, Rajasthan - 312404</p>
         </div>
       </div>
 
       {/* Bottom */}
       <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="font-heading text-xl">
-          <a href="#home" className="font-heading text-2xl text-foreground">
-          {/* Happy Public School<span className="text-secondary">.</span> */}
-          <img className="h-12" src="logo.svg"/>
-        </a>
+          <a href="#home" className="flex items-center gap-3">
+            <img className="h-12 drop-shadow-sm transition-transform hover:scale-105" src="logo.svg" alt="Happy Public Senior Secondary School Logo" />
+          </a>
         </div>
         <div className="flex items-center gap-3 text-sm">
           <a
@@ -62,9 +61,11 @@ const Footer = () => (
             Facebook
           </a>
         </div>
-        <p className="text-xs text-primary-foreground/40 italic">Educating minds, shaping futures.</p>
+        <div className="text-secondary font-heading text-lg tracking-wide text-center">
+          Inspire. Achieve. Flourish.
+        </div>
         <p className="text-xs text-primary-foreground/30">
-          © {new Date().getFullYear()} Happy Public Secondary School. All rights reserved.
+          © {new Date().getFullYear()} Happy Public Senior Secondary School. All rights reserved.
         </p>
       </div>
     </div>

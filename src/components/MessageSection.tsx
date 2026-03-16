@@ -6,7 +6,7 @@ const MessageSection = () => (
   <section id="leadership" className="py-16 md:py-24">
     <div className="container mx-auto px-4">
       {/* Leadership cards */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Director Card */}
         <div className="bg-school-olive rounded-[2rem] p-8 md:p-10 text-primary-foreground relative overflow-hidden">
           <div className="absolute top-6 right-6 w-16 h-16 bg-primary-foreground/10 rounded-full" />
@@ -14,7 +14,7 @@ const MessageSection = () => (
             Confidence that builds a brighter future.
           </h3>
           <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6 max-w-xs">
-            At Happy Public Secondary School, our goal is to provide a strong educational foundation while developing discipline, creativity, and confidence in every student.
+            At Happy Public Senior Secondary School, our goal is to provide a strong educational foundation while developing discipline, creativity, and confidence in every student.
           </p>
           <div className="flex items-center gap-4 mb-6">
             <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-foreground/30">
@@ -52,7 +52,6 @@ const MessageSection = () => (
         {/* HOD Card */}
         <div className="bg-primary rounded-[2rem] p-8 md:p-10 text-primary-foreground relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 mix-blend-soft-light">
-            <img src={heroStudentsImg} alt="Science department" className="w-full h-full object-cover" />
           </div>
           <div className="relative">
             <div className="absolute top-6 right-6 w-14 h-14 bg-primary-foreground/15 rounded-full" />
@@ -70,6 +69,30 @@ const MessageSection = () => (
                 <div className="font-bold text-sm">Mr. Durga Shankar Menariya</div>
                 <div className="text-xs text-primary-foreground/60">HOD, Science</div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Academic Coordinator Card */}
+        <div className="bg-school-green rounded-[2rem] p-8 md:p-10 text-primary-foreground relative overflow-hidden">
+          <div className="absolute top-6 right-6">
+            <span className="text-4xl">📚</span>
+          </div>
+          <h3 className="font-heading text-2xl md:text-3xl mb-2 leading-tight">
+            Curriculum that inspires excellence.
+          </h3>
+          <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6 max-w-xs">
+            We design academic programs that adapt to modern needs, ensuring every student discovers their true potential and academic strengths.
+          </p>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground">
+              <span className="w-full h-full flex flex-col items-center justify-center font-bold text-xl">
+                R
+              </span>
+            </div>
+            <div>
+              <div className="font-bold text-sm">Mr. Raj Kumar</div>
+              <div className="text-xs text-primary-foreground/60">Academic Coordinator</div>
             </div>
           </div>
         </div>

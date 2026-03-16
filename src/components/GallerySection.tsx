@@ -66,7 +66,7 @@ const GallerySection = () => {
           <div>
             <p className="text-sm font-semibold text-secondary uppercase tracking-wide">Gallery</p>
             <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-tight">
-              Moments that make Happy Public
+              Moments that make Happy Public Senior Secondary School
             </h2>
             <p className="text-muted-foreground mt-3 max-w-2xl">
               A quick dive into our classrooms, labs, fields, and celebrations. Hover to explore the details.

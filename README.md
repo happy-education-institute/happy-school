@@ -1,6 +1,6 @@
-# Happy Public Secondary School Website
+# Happy Public Senior Secondary School Website
 
-Modern, responsive website for Happy Public Secondary School (Sangariya). Built with Vite, React, TypeScript, Tailwind CSS, and shadcn/ui.
+Modern, responsive website for Happy Public Senior Secondary School (Sangariya). Built with Vite, React, TypeScript, Tailwind CSS, and shadcn/ui.
 
 ## Tech stack
 - Vite + React + TypeScript

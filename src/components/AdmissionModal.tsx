@@ -10,6 +10,8 @@ const computeAcademicYear = () => {
 
 const AdmissionModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const timerRef = useRef<number | null>(null);
   const academicYear = useMemo(computeAcademicYear, []);
 
@@ -99,23 +101,59 @@ const AdmissionModal = () => {
                   Secure Your Child's Future!
                 </h2>
 
-                <p className="text-gray-600 text-lg mb-6">
-                  We are now accepting applications for the new academic
-                  session. Give your child the gift of quality education and a
-                  nurturing environment.
-                </p>
-
-                <p className="font-bold text-red-600 text-xl mb-8 animate-pulse">
+                <p className="font-bold text-red-600 text-xl mb-6 animate-pulse">
                   Limited Seats Available!
                 </p>
 
-                <button
-                  onClick={handleEnquire}
-                  className="w-full bg-primary text-primary-foreground font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
+                <form
+                  className="w-full space-y-3 text-left"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (!name.trim() || !phone.trim()) {
+                      alert("Please provide both name and phone number.");
+                      return;
+                    }
+                    const whatsappNumber = "919602805710";
+                    const rawText = `Hello!\nI am interested in admission for the ${academicYear} session.\nName: ${name}\nPhone: ${phone}`;
+                    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawText)}`;
+                    window.open(url, "_blank");
+                    handleClose();
+                  }}
                 >
-                  <span>Enquire Now</span>
-                  <ArrowRight className="w-6 h-6" />
-                </button>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your Name"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none transition-all shadow-sm"
+                  />
+                  <input
+                    type="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Phone Number"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none transition-all shadow-sm"
+                  />
+                  
+                  <div className="flex flex-col gap-2 pt-2">
+                    <button
+                      type="submit"
+                      className="w-full bg-primary text-primary-foreground font-bold text-lg px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3"
+                    >
+                      <span>Send via WhatsApp</span>
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleEnquire}
+                      className="w-full bg-white text-secondary font-bold text-lg px-8 py-3.5 rounded-xl border border-secondary hover:bg-secondary/5 transition-all duration-300 text-center shadow-sm"
+                    >
+                      Enquire Now
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

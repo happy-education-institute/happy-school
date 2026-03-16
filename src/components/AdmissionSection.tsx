@@ -34,7 +34,7 @@ const AdmissionSection = () => (
               <CheckCircle className="w-5 h-5 text-primary-foreground" />
             </div>
             <div>
-              <div className="font-heading text-2xl text-foreground">300+</div>
+              <div className="font-heading text-2xl text-foreground">3000+</div>
               <div className="text-xs text-muted-foreground font-semibold">Students enrolled</div>
             </div>
           </div>

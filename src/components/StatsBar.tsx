@@ -2,7 +2,7 @@ import { Calendar, Users, UserCheck, BookOpen } from "lucide-react";
 
 const stats = [
   { icon: Calendar, label: "Serving Since", value: "2008", bg: "bg-secondary" },
-  { icon: Users, label: "Happy Students", value: "300+", bg: "bg-school-green" },
+  { icon: Users, label: "Happy Students", value: "3000+", bg: "bg-school-green" },
   { icon: UserCheck, label: "Expert Faculty", value: "30+", bg: "bg-school-olive" },
   { icon: BookOpen, label: "Classes Available", value: "Nursery–12th", bg: "bg-primary" },
 ];

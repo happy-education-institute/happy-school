@@ -51,9 +51,9 @@ const ContactSection = () => {
                   <div>
                     <div className="font-bold text-sm mb-1">Address</div>
                     <p className="text-sm text-secondary-foreground/70">
-                      Happy Public Secondary School
+                      Happy Public Senior Secondary School
                       <br />
-                      Sangariya, Rajasthan
+                      Udaipur Road, Sangariya, Block - Barisadri, Rajasthan - 312404
                     </p>
                   </div>
                 </div>
@@ -64,10 +64,13 @@ const ContactSection = () => {
                   <div>
                     <div className="font-bold text-sm mb-1">Phone</div>
                     <a href="tel:9602805710" className="block text-sm hover:underline font-semibold">
-                      📞 9602805710
+                      +91 9602805710
                     </a>
                     <a href="tel:8890655123" className="block text-sm hover:underline font-semibold">
-                      📞 8890655123
+                      +91 8890655123
+                    </a>
+                    <a href="tel:7742159118" className="block text-sm hover:underline font-semibold">
+                      +91 7742159118
                     </a>
                   </div>
                 </div>
@@ -75,7 +78,7 @@ const ContactSection = () => {
 
               <div className="rounded-2xl overflow-hidden border border-secondary-foreground/20 shadow-inner bg-secondary-foreground/10">
                 <iframe
-                  title="Happy Public School Location"
+                  title="Happy Public Senior Secondary School Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6571.787470988954!2d74.42000951781063!3d24.4843905130606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3966380e2eab1213%3A0x6e81806c6c731a52!2sHappy%20Public%20School%20Sangariya!5e1!3m2!1sen!2sin!4v1773481575533!5m2!1sen!2sin"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
