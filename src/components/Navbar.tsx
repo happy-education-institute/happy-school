@@ -1,28 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "../context/LanguageContext";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Programs", href: "#academics" },
-  { label: "Facilities", href: "#facilities" },
-  { label: "Leadership", href: "#leadership" },
-  { label: "Contact", href: "#contact" },
+const navLinksData = [
+  { key: "about", href: "#about" },
+  { key: "programs", href: "#academics" },
+  { key: "facilities", href: "#facilities" },
+  { key: "leadership", href: "#leadership" },
+  { key: "contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [isHindi, setIsHindi] = useState(false);
-
-  useEffect(() => {
-    setIsHindi(document.cookie.includes("googtrans=/en/hi"));
-  }, []);
+  const { language, setLanguage, t } = useLanguage();
+  const isHindi = language === "hi";
 
   const toggleLanguage = () => {
-    const newLang = isHindi ? "en" : "hi";
-    document.cookie = `googtrans=/en/${newLang}; path=/`;
-    document.cookie = `googtrans=/en/${newLang}; domain=${window.location.hostname}; path=/`;
-    window.location.reload();
+    setLanguage(isHindi ? "en" : "hi");
   };
 
   return (
@@ -33,13 +28,13 @@ const Navbar = () => {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
+          {navLinksData.map((l) => (
             <a
               key={l.href}
               href={l.href}
               className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
             >
-              {l.label}
+              {t('navbar', l.key)}
             </a>
           ))}
           <div className="flex items-center gap-3">
@@ -49,13 +44,13 @@ const Navbar = () => {
               title="Toggle Language"
             >
               <Languages className="w-4 h-4 text-secondary" />
-              {isHindi ? "English" : "हिंदी"}
+              {isHindi ? t('navbar', 'switchShort') : t('navbar', 'switchShort')}
             </button>
             <Button
               asChild
               className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 text-sm font-bold"
             >
-              <a href="#contact">Get Started</a>
+              <a href="#contact">{t('navbar', 'getStarted')}</a>
             </Button>
           </div>
         </div>
@@ -67,7 +62,7 @@ const Navbar = () => {
             title="Toggle Language"
           >
             <Languages className="w-4 h-4 text-secondary" />
-            {isHindi ? "EN" : "HI"}
+            {isHindi ? t('navbar', 'switchShort') : t('navbar', 'switchShort')}
           </button>
           <button onClick={() => setOpen(!open)}>
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -77,14 +72,14 @@ const Navbar = () => {
 
       {open && (
         <div className="md:hidden bg-background border-t px-4 pb-4 space-y-3">
-          {navLinks.map((l) => (
+          {navLinksData.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className="block text-sm font-bold py-2 text-muted-foreground hover:text-foreground"
             >
-              {l.label}
+              {t('navbar', l.key)}
             </a>
           ))}
 
@@ -93,7 +88,7 @@ const Navbar = () => {
             className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-full font-bold"
           >
             <a href="#admission" onClick={() => setOpen(false)}>
-              Get Started
+              {t('navbar', 'getStarted')}
             </a>
           </Button>
         </div>

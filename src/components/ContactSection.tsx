@@ -1,7 +1,9 @@
 import { useState, FormEvent } from "react";
 import { Phone, MapPin, Send } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 const ContactSection = () => {
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -10,7 +12,7 @@ const ContactSection = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim() || !message.trim()) {
-      alert("Please fill in Name, Phone, and Message before sending.");
+      alert(t('contact', 'alert'));
       return;
     }
 
@@ -31,15 +33,15 @@ const ContactSection = () => {
           <div className="grid lg:grid-cols-2 gap-10 relative">
             <div className="space-y-6">
               <span className="inline-block bg-secondary-foreground/20 text-secondary-foreground font-bold text-xs px-4 py-1.5 rounded-full">
-                Get in Touch
+                {t('contact', 'getInTouch')}
               </span>
               <div>
                 <h2 className="font-heading text-3xl md:text-4xl mb-2 leading-tight">
-                  Building children
-                  <br />one at a time
+                  {t('contact', 'title1')}
+                  <br />{t('contact', 'title2')}
                 </h2>
                 <p className="text-secondary-foreground/70 text-sm">
-                  Ceaseless flows from the fountains of knowledge.
+                  {t('contact', 'subtitle')}
                 </p>
               </div>
 
@@ -49,11 +51,11 @@ const ContactSection = () => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="font-bold text-sm mb-1">Address</div>
+                    <div className="font-bold text-sm mb-1">{t('contact', 'address')}</div>
                     <p className="text-sm text-secondary-foreground/70">
-                      Happy Public Senior Secondary School
+                      {t('contact', 'addressVal')}
                       <br />
-                      Udaipur Road, Sangariya, Block - Barisadri, Rajasthan - 312404
+                      {t('contact', 'addressVal2')}
                     </p>
                   </div>
                 </div>
@@ -62,7 +64,7 @@ const ContactSection = () => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="font-bold text-sm mb-1">Phone</div>
+                    <div className="font-bold text-sm mb-1">{t('contact', 'phoneTitle')}</div>
                     <a href="tel:9602805710" className="block text-sm hover:underline font-semibold">
                       +91 9602805710
                     </a>
@@ -92,48 +94,48 @@ const ContactSection = () => {
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <label className="flex flex-col gap-2 text-sm font-semibold">
-                    Name<span className="text-red-100">*</span>
+                    {t('contact', 'formName')}<span className="text-red-100">*</span>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full rounded-xl border border-secondary-foreground/30 bg-secondary-foreground/10 px-3 py-2 text-secondary-foreground placeholder:text-secondary-foreground/50 focus:outline-none focus:ring-2 focus:ring-white/70"
-                      placeholder="Your name"
+                      placeholder={t('contact', 'formNamePlaceholder')}
                     />
                   </label>
                   <label className="flex flex-col gap-2 text-sm font-semibold">
-                    Phone<span className="text-red-100">*</span>
+                    {t('contact', 'formPhone')}<span className="text-red-100">*</span>
                     <input
                       type="tel"
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full rounded-xl border border-secondary-foreground/30 bg-secondary-foreground/10 px-3 py-2 text-secondary-foreground placeholder:text-secondary-foreground/50 focus:outline-none focus:ring-2 focus:ring-white/70"
-                      placeholder="e.g. 9602805710"
+                      placeholder={t('contact', 'formPhonePlaceholder')}
                     />
                   </label>
                 </div>
 
                 <label className="flex flex-col gap-2 text-sm font-semibold">
-                  Email
+                  {t('contact', 'formEmail')}
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full rounded-xl border border-secondary-foreground/30 bg-secondary-foreground/10 px-3 py-2 text-secondary-foreground placeholder:text-secondary-foreground/50 focus:outline-none focus:ring-2 focus:ring-white/70"
-                    placeholder="you@example.com"
+                    placeholder={t('contact', 'formEmailPlaceholder')}
                   />
                 </label>
 
                 <label className="flex flex-col gap-2 text-sm font-semibold">
-                  Message<span className="text-red-100">*</span>
+                  {t('contact', 'formMessage')}<span className="text-red-100">*</span>
                   <textarea
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full rounded-xl border border-secondary-foreground/30 bg-secondary-foreground/10 px-3 py-3 text-secondary-foreground placeholder:text-secondary-foreground/50 focus:outline-none focus:ring-2 focus:ring-white/70 min-h-[120px]"
-                    placeholder="How can we help?"
+                    placeholder={t('contact', 'formMessagePlaceholder')}
                   />
                 </label>
 
@@ -142,10 +144,10 @@ const ContactSection = () => {
                   className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all"
                 >
                   <Send className="w-5 h-5" />
-                  Send via WhatsApp
+                  {t('contact', 'sendBtn')}
                 </button>
                 <p className="text-xs text-secondary-foreground/70 text-center">
-                  Clicking send opens WhatsApp with your message prefilled.
+                  {t('contact', 'sendDesc')}
                 </p>
               </form>
             </div>

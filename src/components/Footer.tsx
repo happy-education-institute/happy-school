@@ -1,34 +1,38 @@
 import { Facebook, Instagram } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
-const Footer = () => (
-  <footer className="bg-foreground text-primary-foreground py-12">
+const Footer = () => {
+  const { t } = useLanguage();
+
+  return (
+    <footer className="bg-foreground text-primary-foreground py-12">
     <div className="container mx-auto px-4">
       {/* Top links */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10 text-sm">
         <div>
-          <h4 className="font-bold mb-3 text-primary-foreground/80">School</h4>
+          <h4 className="font-bold mb-3 text-primary-foreground/80">{t('footer', 'school')}</h4>
           <div className="space-y-2">
-            <a href="#about" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">About Us</a>
-            <a href="#academics" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">Programs</a>
-            <a href="#facilities" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">Facilities</a>
+            <a href="#about" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'aboutUs')}</a>
+            <a href="#academics" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'programs')}</a>
+            <a href="#facilities" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'facilities')}</a>
           </div>
         </div>
         <div>
-          <h4 className="font-bold mb-3 text-primary-foreground/80">Admissions</h4>
+          <h4 className="font-bold mb-3 text-primary-foreground/80">{t('footer', 'admissions')}</h4>
           <div className="space-y-2">
-            <a href="#admission" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">Apply Now</a>
-            <a href="#contact" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">Contact Us</a>
+            <a href="#admission" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'applyNow')}</a>
+            <a href="#contact" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'contactUs')}</a>
           </div>
         </div>
         <div>
-          <h4 className="font-bold mb-3 text-primary-foreground/80">Contact</h4>
+          <h4 className="font-bold mb-3 text-primary-foreground/80">{t('footer', 'contact')}</h4>
           <div className="space-y-2">
             <a href="tel:9602805710" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">9602805710</a>
             <a href="tel:8890655123" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">8890655123</a>
           </div>
         </div>
         <div>
-          <h4 className="font-bold mb-3 text-primary-foreground/80">Location</h4>
+          <h4 className="font-bold mb-3 text-primary-foreground/80">{t('footer', 'location')}</h4>
           <p className="text-primary-foreground/50">Udaipur Road, Sangariya, Block - Barisadri, Rajasthan - 312404</p>
         </div>
       </div>
@@ -62,14 +66,15 @@ const Footer = () => (
           </a>
         </div>
         <div className="text-secondary font-heading text-lg tracking-wide text-center">
-          Inspire. Achieve. Flourish.
+          {t('footer', 'inspire')}
         </div>
         <p className="text-xs text-primary-foreground/30">
-          © {new Date().getFullYear()} Happy Public Senior Secondary School. All rights reserved.
+          © {new Date().getFullYear()} {t('footer', 'rights')}
         </p>
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

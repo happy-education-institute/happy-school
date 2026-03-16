@@ -109,26 +109,4 @@
   .blob-shape-2 {
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   }
-
-  /* Google Translate Overrides */
-  .goog-te-banner-frame.skiptranslate, 
-  .goog-te-gadget-icon,
-  #goog-gt-tt,
-  .goog-te-balloon-frame,
-  .VIpgJd-ZVi9od-ORHb-OEVmcd,
-  .goog-te-spinner-pos {
-    display: none !important;
-  }
-  body {
-    top: 0px !important;
-    position: static !important;
-  }
-  .goog-tooltip, .goog-tooltip:hover {
-    display: none !important;
-  }
-  .goog-text-highlight {
-    background-color: transparent !important;
-    border: none !important; 
-    box-shadow: none !important;
-  }
 }

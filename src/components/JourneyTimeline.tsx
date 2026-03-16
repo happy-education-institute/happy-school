@@ -1,47 +1,27 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Milestone {
-  year: string;
-  title: string;
-  description: string;
+  keyIndex: "m1" | "m2" | "m3" | "m4";
 }
 
 const milestones: Milestone[] = [
-  {
-    year: "2008",
-    title: "Humble start up to Class 8",
-    description:
-      "Opened our doors with a single block and a promise: joyful learning, close teacher attention, and strong values for every child.",
-  },
-  {
-    year: "2014-2015",
-    title: "Upgraded to secondary (Class 10)",
-    description:
-      "Expanded labs and library hours, introduced foundational coding and science clubs, and celebrated our first district-level merit holders.",
-  },
-  {
-    year: "2020",
-    title: "Digital leap and maker culture",
-    description:
-      "Added smart classrooms, robotics kits, and STEM fairs that encouraged students to prototype, present, and publish their ideas with confidence.",
-  },
-  {
-    year: "2025-2026",
-    title: "Senior secondary (Class 12) with career focus",
-    description:
-      "Launched dedicated streams with mentorship, Olympiad prep, career guidance, and university counseling to help every learner choose their next path.",
-  },
+  { keyIndex: "m1" },
+  { keyIndex: "m2" },
+  { keyIndex: "m3" },
+  { keyIndex: "m4" },
 ];
 
 const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: number }) => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: false, margin: "-20%" });
   const isLeft = index % 2 === 0;
 
   return (
     <motion.div
-      key={milestone.year}
+      key={milestone.keyIndex}
       ref={ref}
       className={`relative flex items-center mb-12 md:mb-16 ${
         isLeft ? "md:justify-start" : "md:justify-end"
@@ -67,7 +47,7 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
             animate={isInView ? { scale: 1 } : {}}
             transition={{ duration: 0.4, delay: index * 0.12 + 0.2 }}
           >
-            {milestone.year}
+            {t('journey', milestone.keyIndex + 'Y')}
           </motion.div>
           <motion.h3
             className="font-heading text-xl text-foreground mb-3 leading-tight"
@@ -75,7 +55,7 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, delay: index * 0.12 + 0.28 }}
           >
-            {milestone.title}
+            {t('journey', milestone.keyIndex + 'T')}
           </motion.h3>
           <motion.p
             className="text-muted-foreground leading-relaxed text-sm md:text-base"
@@ -83,7 +63,7 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.4, delay: index * 0.12 + 0.34 }}
           >
-            {milestone.description}
+            {t('journey', milestone.keyIndex + 'D')}
           </motion.p>
         </motion.div>
       </div>
@@ -121,8 +101,11 @@ const MilestoneCard = ({ milestone, index }: { milestone: Milestone; index: numb
   );
 };
 
-const JourneyTimeline = () => (
-  <section id="journey" className="py-20 bg-background overflow-hidden">
+const JourneyTimeline = () => {
+  const { t } = useLanguage();
+
+  return (
+    <section id="journey" className="py-20 bg-background overflow-hidden">
     <div className="container mx-auto px-4">
       <motion.div
         className="text-center mb-16"
@@ -131,13 +114,12 @@ const JourneyTimeline = () => (
         transition={{ duration: 0.6 }}
         viewport={{ once: false }}
       >
-        <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-3">About Us</p>
+        <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-3">{t('journey', 'about')}</p>
         <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-4">
-          Our <span className="text-secondary italic">Journey</span>
+          {t('journey', 'title1')} <span className="text-secondary italic">{t('journey', 'title2')}</span>
         </h2>
         <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-medium">
-          A timeline of care, curiosity, and bold upgrades that keep our
-          students future-ready.
+          {t('journey', 'desc')}
         </p>
       </motion.div>
 
@@ -157,14 +139,15 @@ const JourneyTimeline = () => (
 
         {milestones.map((milestone, index) => (
           <MilestoneCard
-            key={milestone.year}
+            key={milestone.keyIndex}
             milestone={milestone}
             index={index}
           />
         ))}
       </div>
-    </div>
-  </section>
-);
+      </div>
+    </section>
+  );
+};
 
 export default JourneyTimeline;
