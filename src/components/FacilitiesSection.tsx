@@ -32,7 +32,7 @@ const FacilitiesSection = () => {
               <div className="w-14 h-14 rounded-2xl bg-school-peach flex items-center justify-center mb-4 text-2xl group-hover:scale-110 transition-transform">
                 {f.emoji}
               </div>
-              <h3 className="font-heading text-lg text-foreground mb-1">{t('facilities', f.key + 'Class') || t('facilities', f.key)}</h3>
+              <h3 className="font-heading text-lg text-foreground mb-1">{t('facilities', f.key)}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{t('facilities', f.key + 'Desc')}</p>
             </div>
           ))}
