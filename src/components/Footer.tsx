@@ -29,6 +29,7 @@ const Footer = () => {
           <div className="space-y-2">
             <a href="tel:9602805710" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">9602805710</a>
             <a href="tel:8890655123" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">8890655123</a>
+            <a href="tel:7742159118" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">7742159118</a>
           </div>
         </div>
         <div>

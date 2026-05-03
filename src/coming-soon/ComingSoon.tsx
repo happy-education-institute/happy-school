@@ -74,6 +74,8 @@ const ComingSoon = () => {
             <a href="tel:+919602805710">+91 96028 05710</a>
             <span className="cs-contact-separator">|</span>
             <a href="tel:+918890655123">+91 88906 55123</a>
+            <span className="cs-contact-separator">|</span>
+            <a href="tel:+917742159118">+91 77421 59118</a>
           </div>
 
           <div className="cs-contact-row">
