@@ -1,3 +1,23 @@
+/**
+ * ╔══════════════════════════════════════════════════════════╗
+ * ║  COMING SOON MODE — ACTIVE                              ║
+ * ║                                                          ║
+ * ║  To launch the actual website:                           ║
+ * ║   1. Uncomment the REAL APP section below.               ║
+ * ║   2. Comment-out or delete the COMING SOON section.      ║
+ * ║   3. Delete the  src/coming-soon/  folder entirely.      ║
+ * ╚══════════════════════════════════════════════════════════╝
+ */
+
+// ─── COMING SOON (remove this block when launching) ───────
+import ComingSoon from "./coming-soon/ComingSoon.tsx";
+
+const App = () => <ComingSoon />;
+
+export default App;
+// ──────────────────────────────────────────────────────────
+
+/*  ─── REAL APP (uncomment this block when launching) ──────
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -16,7 +36,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE * /}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
@@ -25,3 +45,4 @@ const App = () => (
 );
 
 export default App;
+─────────────────────────────────────────────────────────── */

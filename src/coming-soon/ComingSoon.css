@@ -1,0 +1,327 @@
+/* ============================================================
+   COMING SOON PAGE — Happy Public Senior Secondary School
+   To remove: delete the entire src/coming-soon/ folder
+   and revert App.tsx to show the real site.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ---------- variables ---------- */
+:root {
+  --cs-navy: #0f1b3d;
+  --cs-navy-deep: #091229;
+  --cs-navy-mid: #162250;
+  --cs-gold: #d4a843;
+  --cs-gold-light: #f0d078;
+  --cs-gold-dim: #a07c2e;
+  --cs-white: #f5f3ef;
+  --cs-white-soft: #e8e6e3;
+  --cs-muted: #9a97a0;
+  --cs-glass: rgba(255, 255, 255, 0.04);
+  --cs-glass-border: rgba(255, 255, 255, 0.07);
+  --cs-glow: rgba(212, 168, 67, 0.2);
+}
+
+/* ---------- full-page wrapper ---------- */
+.cs-page {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(170deg, var(--cs-navy-deep) 0%, var(--cs-navy) 40%, var(--cs-navy-mid) 100%);
+  font-family: 'Inter', sans-serif;
+  color: var(--cs-white);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 9999;
+}
+
+/* ---------- background effects ---------- */
+.cs-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cs-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cs-gold-light), transparent 70%);
+  opacity: 0;
+  animation: cs-float 14s ease-in-out infinite;
+}
+
+.cs-particle:nth-child(1) { width: 5px; height: 5px; left: 12%; top: 15%; animation-delay: 0s; animation-duration: 16s; }
+.cs-particle:nth-child(2) { width: 4px; height: 4px; left: 75%; top: 8%;  animation-delay: 2s; animation-duration: 20s; }
+.cs-particle:nth-child(3) { width: 6px; height: 6px; left: 35%; top: 75%; animation-delay: 4s; animation-duration: 18s; }
+.cs-particle:nth-child(4) { width: 3px; height: 3px; left: 85%; top: 55%; animation-delay: 1s; animation-duration: 22s; }
+.cs-particle:nth-child(5) { width: 4px; height: 4px; left: 20%; top: 88%; animation-delay: 3s; animation-duration: 15s; }
+.cs-particle:nth-child(6) { width: 5px; height: 5px; left: 55%; top: 35%; animation-delay: 5s; animation-duration: 17s; }
+
+@keyframes cs-float {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(1); }
+  30%      { opacity: 0.5; }
+  50%      { opacity: 0.25; transform: translateY(-30px) scale(1.2); }
+  70%      { opacity: 0.45; }
+}
+
+.cs-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+.cs-glow-orb {
+  position: fixed;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cs-glow) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: cs-pulse 7s ease-in-out infinite;
+}
+
+@keyframes cs-pulse {
+  0%, 100% { opacity: 0.45; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 0.75; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+/* ---------- main card ---------- */
+.cs-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 44px 36px;
+  max-width: 560px;
+  width: 92%;
+  background: var(--cs-glass);
+  border: 1px solid var(--cs-glass-border);
+  border-radius: 22px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 60px rgba(212, 168, 67, 0.05),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: cs-fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+  margin: 24px 0;
+}
+
+@keyframes cs-fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* corner accents */
+.cs-corner { position: absolute; width: 24px; height: 24px; border-color: var(--cs-gold); border-style: solid; opacity: 0.3; }
+.cs-corner--tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; border-radius: 5px 0 0 0; }
+.cs-corner--tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; border-radius: 0 5px 0 0; }
+.cs-corner--bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; border-radius: 0 0 0 5px; }
+.cs-corner--br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; border-radius: 0 0 5px 0; }
+
+/* ---------- logo ---------- */
+.cs-logo-wrap {
+  margin-bottom: 24px;
+  animation: cs-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+  opacity: 0;
+}
+
+@keyframes cs-reveal {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.cs-logo {
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 18px rgba(212, 168, 67, 0.2));
+}
+
+/* ---------- school name ---------- */
+.cs-school-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--cs-white);
+  margin: 0 0 6px;
+  animation: cs-textIn 0.8s ease 0.45s forwards;
+  opacity: 0;
+}
+
+/* ---------- divider ---------- */
+.cs-divider {
+  width: 72px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cs-gold), transparent);
+  margin: 14px 0 20px;
+  animation: cs-grow 0.8s ease 0.55s forwards;
+  opacity: 0;
+}
+
+@keyframes cs-grow {
+  from { opacity: 0; width: 0; }
+  to   { opacity: 1; width: 72px; }
+}
+
+/* ---------- admission badge ---------- */
+.cs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--cs-gold) 0%, var(--cs-gold-dim) 100%);
+  color: var(--cs-navy-deep);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: cs-textIn 0.8s ease 0.65s forwards;
+  opacity: 0;
+  box-shadow: 0 4px 20px rgba(212, 168, 67, 0.3);
+}
+
+.cs-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cs-navy-deep);
+  animation: cs-blink 1.4s ease-in-out infinite;
+}
+
+@keyframes cs-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ---------- coming soon heading ---------- */
+.cs-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0 0 14px;
+  background: linear-gradient(135deg, var(--cs-gold-light) 0%, var(--cs-gold) 55%, var(--cs-gold-dim) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: cs-textIn 0.8s ease 0.75s forwards;
+  opacity: 0;
+}
+
+@keyframes cs-textIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- sub-text ---------- */
+.cs-subtext {
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: var(--cs-white-soft);
+  line-height: 1.65;
+  max-width: 400px;
+  margin: 0 0 24px;
+  animation: cs-textIn 0.8s ease 0.85s forwards;
+  opacity: 0;
+}
+
+/* ---------- contact info ---------- */
+.cs-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  animation: cs-textIn 0.8s ease 0.95s forwards;
+  opacity: 0;
+}
+
+.cs-contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--cs-white-soft);
+}
+
+.cs-contact-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--cs-gold);
+}
+
+.cs-contact-row a {
+  color: var(--cs-gold-light);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.cs-contact-row a:hover {
+  color: #fff;
+}
+
+.cs-contact-separator {
+  color: var(--cs-muted);
+  font-weight: 300;
+}
+
+/* ---------- address ---------- */
+.cs-address {
+  font-size: 0.82rem;
+  color: var(--cs-muted);
+  line-height: 1.55;
+  max-width: 320px;
+  margin: 0 0 28px;
+  animation: cs-textIn 0.8s ease 1.05s forwards;
+  opacity: 0;
+}
+
+/* ---------- footer credit ---------- */
+.cs-footer {
+  font-size: 0.78rem;
+  color: var(--cs-muted);
+  animation: cs-textIn 0.8s ease 1.15s forwards;
+  opacity: 0;
+}
+
+.cs-footer a {
+  color: var(--cs-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.cs-footer a:hover {
+  color: var(--cs-gold-light);
+  text-shadow: 0 0 10px var(--cs-glow);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 480px) {
+  .cs-card { padding: 36px 20px 28px; }
+  .cs-heading { font-size: 2rem; }
+  .cs-school-name { font-size: 1.1rem; }
+  .cs-logo { width: 160px; }
+  .cs-subtext { font-size: 0.9rem; }
+  .cs-contact-row { font-size: 0.82rem; flex-wrap: wrap; }
+}
