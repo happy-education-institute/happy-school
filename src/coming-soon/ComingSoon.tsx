@@ -7,9 +7,32 @@
  *      to the real  <Index />  page.
  */
 
+import { useEffect, useState } from "react";
 import "./ComingSoon.css";
 
+// ── Target: midnight June 14 2026 IST (UTC+5:30) ──
+const TARGET = new Date("2026-06-14T00:00:00+05:30").getTime();
+
+function getTimeLeft() {
+  const diff = Math.max(0, TARGET - Date.now());
+  return {
+    hours:   Math.floor(diff / 1000 / 3600),
+    minutes: Math.floor((diff / 1000 / 60) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+    done:    diff === 0,
+  };
+}
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
 const ComingSoon = () => {
+  const [time, setTime] = useState(getTimeLeft());
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(getTimeLeft()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div className="cs-page">
       {/* ── Background ── */}
@@ -54,6 +77,31 @@ const ComingSoon = () => {
 
         {/* Coming Soon */}
         <h1 className="cs-heading">Coming Soon</h1>
+
+        {/* ── Countdown Timer ── */}
+        {!time.done ? (
+          <div className="cs-timer" aria-label="Countdown to launch">
+            <div className="cs-timer-label">Website launches in</div>
+            <div className="cs-timer-blocks">
+              <div className="cs-timer-block">
+                <span className="cs-timer-num">{pad(time.hours)}</span>
+                <span className="cs-timer-unit">Hours</span>
+              </div>
+              <span className="cs-timer-colon">:</span>
+              <div className="cs-timer-block">
+                <span className="cs-timer-num">{pad(time.minutes)}</span>
+                <span className="cs-timer-unit">Minutes</span>
+              </div>
+              <span className="cs-timer-colon">:</span>
+              <div className="cs-timer-block">
+                <span className="cs-timer-num">{pad(time.seconds)}</span>
+                <span className="cs-timer-unit">Seconds</span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="cs-timer-done">🎉 We're Live! Refresh the page.</div>
+        )}
 
         {/* Sub-text */}
         <p className="cs-subtext">

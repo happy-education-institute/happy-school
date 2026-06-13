@@ -22,8 +22,13 @@ export const translations = {
     academics: {
       subtitle1: "We focus on one", subtitle2: "impactful", subtitle3: "lesson at a time",
       title1: "Shaping the", title2: "future", title3: "of kids",
-      science: "Science Stream", commerce: "Commerce Stream", arts: "Arts Stream",
-      subjects: { phy: "Physics", chem: "Chemistry", bio: "Biology", math: "Mathematics", acc: "Accountancy", bs: "Business Studies", eco: "Economics", hist: "History", pol: "Political Science", geo: "Geography", hindi: "Hindi Literature" }
+      science: "Science Stream", agriculture: "Agriculture Stream", arts: "Arts Stream", commerce: "Commerce Stream",
+      subjects: {
+        phy: "Physics", chem: "Chemistry", bio: "Biology", math: "Mathematics",
+        agbio: "Agriculture Biology", agchem: "Agriculture Chemistry",
+        hindi: "Hindi Literature", eng: "English Literature", hist: "History", geo: "Geology", pol: "Political Science", sans: "Sanskrit", eco: "Economics",
+        acc: "Accountancy", bs: "Business Studies", cecon: "Economics"
+      }
     },
     facilities: {
       subtitle: "Everything your child needs", title1: "Our", title2: "Facilities",
@@ -125,8 +130,13 @@ export const translations = {
     academics: {
       subtitle1: "हम एक समय में एक", subtitle2: "प्रभावशाली (impactful)", subtitle3: "पाठ पर ध्यान केंद्रित करते हैं",
       title1: "बच्चों के", title2: "भविष्य", title3: "को आकार देना",
-      science: "Science Stream", commerce: "Commerce Stream", arts: "Arts Stream",
-      subjects: { phy: "Physics", chem: "Chemistry", bio: "Biology", math: "Mathematics", acc: "Accountancy", bs: "Business Studies", eco: "Economics", hist: "History", pol: "Political Science", geo: "Geography", hindi: "Hindi Literature" }
+      science: "Science Stream", agriculture: "Agriculture Stream", arts: "Arts Stream", commerce: "Commerce Stream",
+      subjects: {
+        phy: "Physics", chem: "Chemistry", bio: "Biology", math: "Mathematics",
+        agbio: "Agriculture Biology", agchem: "Agriculture Chemistry",
+        hindi: "Hindi साहित्य", eng: "English साहित्य", hist: "इतिहास", geo: "भूगर्भ विज्ञान", pol: "राजनीति विज्ञान", sans: "संस्कृत", eco: "अर्थशास्त्र",
+        acc: "Accountancy", bs: "Business Studies", cecon: "Economics"
+      }
     },
     facilities: {
       subtitle: "आपके बच्चे की जरूरत की हर चीज़", title1: "हमारी", title2: "सुविधाएं (Facilities)",

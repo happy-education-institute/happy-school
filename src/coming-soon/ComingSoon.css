@@ -316,6 +316,93 @@
   text-shadow: 0 0 10px var(--cs-glow);
 }
 
+/* ---------- countdown timer ---------- */
+.cs-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  animation: cs-textIn 0.8s ease 0.9s forwards;
+  opacity: 0;
+}
+
+.cs-timer-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cs-gold);
+}
+
+.cs-timer-blocks {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-timer-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(212, 168, 67, 0.08);
+  border: 1px solid rgba(212, 168, 67, 0.25);
+  border-radius: 12px;
+  padding: 12px 18px 10px;
+  min-width: 72px;
+  box-shadow: 0 0 20px rgba(212, 168, 67, 0.1), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: box-shadow 0.3s;
+}
+
+.cs-timer-block:hover {
+  box-shadow: 0 0 30px rgba(212, 168, 67, 0.22), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.cs-timer-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--cs-gold-light) 0%, var(--cs-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* flip animation on change */
+  animation: cs-tick 1s ease infinite;
+}
+
+.cs-timer-unit {
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cs-muted);
+}
+
+.cs-timer-colon {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cs-gold-dim);
+  line-height: 1;
+  margin-bottom: 18px;
+  animation: cs-blink 1s step-start infinite;
+}
+
+@keyframes cs-tick {
+  0%, 90%, 100% { opacity: 1; }
+  95%            { opacity: 0.7; }
+}
+
+.cs-timer-done {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cs-gold-light);
+  margin-bottom: 20px;
+  animation: cs-textIn 0.8s ease forwards;
+}
+
 /* ---------- responsive ---------- */
 @media (max-width: 480px) {
   .cs-card { padding: 36px 20px 28px; }
@@ -324,4 +411,7 @@
   .cs-logo { width: 160px; }
   .cs-subtext { font-size: 0.9rem; }
   .cs-contact-row { font-size: 0.82rem; flex-wrap: wrap; }
+  .cs-timer-block { min-width: 58px; padding: 10px 12px 8px; }
+  .cs-timer-num { font-size: 1.6rem; }
+  .cs-timer-colon { font-size: 1.5rem; }
 }
