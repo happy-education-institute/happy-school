@@ -1,4 +1,5 @@
 import { Facebook, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
 const Footer = () => {
@@ -15,6 +16,7 @@ const Footer = () => {
             <a href="#about" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'aboutUs')}</a>
             <a href="#academics" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'programs')}</a>
             <a href="#facilities" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">{t('footer', 'facilities')}</a>
+            <Link to="/careers" className="block text-primary-foreground/50 hover:text-primary-foreground transition-colors">Careers</Link>
           </div>
         </div>
         <div>

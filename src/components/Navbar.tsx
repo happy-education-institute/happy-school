@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, Languages } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -46,6 +47,12 @@ const Navbar = () => {
               <Languages className="w-4 h-4 text-secondary" />
               {isHindi ? t('navbar', 'switchShort') : t('navbar', 'switchShort')}
             </button>
+            <Link
+              to="/careers"
+              className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Careers
+            </Link>
             <Button
               asChild
               className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 text-sm font-bold"
@@ -82,6 +89,14 @@ const Navbar = () => {
               {t('navbar', l.key)}
             </a>
           ))}
+
+          <Link
+            to="/careers"
+            onClick={() => setOpen(false)}
+            className="block text-sm font-bold py-2 text-muted-foreground hover:text-foreground"
+          >
+            Careers
+          </Link>
 
           <Button
             asChild

@@ -90,13 +90,11 @@ const MessageSection = () => {
             </p>
             <div className="flex items-center gap-4 mb-6">
               <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground">
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-foreground/30">
-                  <img src="/cordinator.jpeg" alt="Mr. Durga Shankar Menariya" className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <div className="font-bold text-sm">Mr. Raj Kumar</div>
-                  <div className="text-xs text-primary-foreground/60">{t('message', 'coordRole')}</div>
-                </div>
+                <img src="/cordinator.jpeg" alt="Mr. Raj Kumar" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <div className="font-bold text-sm">Mr. Raj Kumar</div>
+                <div className="text-xs text-primary-foreground/60">{t('message', 'coordRole')}</div>
               </div>
             </div>
           </div>
