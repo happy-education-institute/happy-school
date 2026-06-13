@@ -1,12 +1,3 @@
-/**
- * Coming Soon Page — Happy Public Senior Secondary School
- * ─────────────────────────────────────────────────────────
- * HOW TO REMOVE:
- *   1. Delete the entire  src/coming-soon/  folder.
- *   2. In  src/App.tsx  revert the import & route back
- *      to the real  <Index />  page.
- */
-
 import { useEffect, useState } from "react";
 import "./ComingSoon.css";
 
@@ -16,10 +7,10 @@ const TARGET = new Date("2026-06-14T00:00:00+05:30").getTime();
 function getTimeLeft() {
   const diff = Math.max(0, TARGET - Date.now());
   return {
-    hours:   Math.floor(diff / 1000 / 3600),
+    hours: Math.floor(diff / 1000 / 3600),
     minutes: Math.floor((diff / 1000 / 60) % 60),
     seconds: Math.floor((diff / 1000) % 60),
-    done:    diff === 0,
+    done: diff === 0,
   };
 }
 
