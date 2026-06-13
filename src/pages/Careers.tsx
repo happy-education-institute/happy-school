@@ -136,6 +136,19 @@ const Careers = () => {
     handleFileChange(e.dataTransfer.files[0] ?? null);
   };
 
+  /** Convert a File to a base64 string via FileReader */
+  const fileToBase64 = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        // result is "data:application/pdf;base64,XXXX" — strip the prefix
+        const result = reader.result as string;
+        resolve(result.split(",")[1] ?? "");
+      };
+      reader.onerror = () => reject(new Error("Failed to read file."));
+      reader.readAsDataURL(file);
+    });
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formState === "loading") return;
@@ -144,25 +157,33 @@ const Careers = () => {
     setErrorMsg("");
 
     try {
-      // Build multipart form data so the PDF travels with the request
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("phone", phone);
-      formData.append("email", email);
-      formData.append("position", position);
-      formData.append("qualification", qualification);
-      formData.append("experience", experience);
-      formData.append("coverLetter", coverLetter);
-      if (resumeFile) formData.append("resume", resumeFile);
+      // Encode PDF as base64 so we can send plain JSON (avoids multipart issues on Vercel)
+      let resumeBase64: string | null = null;
+      let resumeFilename: string | null = null;
+      if (resumeFile) {
+        resumeBase64 = await fileToBase64(resumeFile);
+        resumeFilename = resumeFile.name;
+      }
 
       const res = await fetch("/api/apply", {
         method: "POST",
-        body: formData,
-        // Do NOT set Content-Type — browser sets it with boundary automatically
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          position,
+          qualification,
+          experience,
+          coverLetter,
+          resumeBase64,
+          resumeFilename,
+        }),
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
 
